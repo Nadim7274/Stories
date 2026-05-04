@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StorySphere — Cinematic Interactive Odyssey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Orbitron:wght@400;700&family=Great+Vibes&family=Cinzel:wght@500;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="worldFx" aria-hidden="true"></canvas>
+    <div id="reticle" aria-hidden="true"></div>
+
+    <header class="hud glass">
+      <div class="brand">StorySphere</div>
+      <nav id="nav"></nav>
+      <div class="controls">
+        <button id="audioBtn" class="chip">Audio Off</button>
+      </div>
+    </header>
+
+    <main id="app"></main>
+
+    <template id="sceneTemplate">
+      <section class="scene">
+        <div class="layer sky" data-depth="0.1"></div>
+        <div class="layer haze" data-depth="0.28"></div>
+        <div class="layer land" data-depth="0.52"></div>
+        <div class="layer foreground" data-depth="0.8"></div>
+        <div class="transition-mask"></div>
+
+        <article class="narrative glass">
+          <h2></h2>
+          <p class="hook"></p>
+          <div class="timeline"></div>
+          <div class="actions">
+            <button class="chip reveal">Trigger Pulse</button>
+          </div>
+        </article>
+
+        <button class="easter-zone" aria-label="hidden trigger"></button>
+      </section>
+    </template>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
