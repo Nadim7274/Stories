@@ -1,0 +1,24 @@
+:root { color-scheme: dark; --fg: #eef3ff; --bg: #05070d; }
+*{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter,sans-serif;overflow-x:hidden}
+#fxCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+.topbar{position:fixed;top:.75rem;left:.75rem;right:.75rem;display:flex;gap:.6rem;align-items:center;justify-content:space-between;padding:.6rem .8rem;z-index:30}
+.topbar h1{margin:0;font-size:1rem;letter-spacing:.08em}
+#genreNav{display:flex;gap:.35rem;overflow:auto;max-width:60vw}
+.pill{border:1px solid #ffffff40;background:#ffffff14;color:white;padding:.4rem .7rem;border-radius:999px;backdrop-filter:blur(10px);transition:.25s transform,.25s background;will-change:transform}
+.pill:hover,.pill:active{transform:translateY(-2px) scale(1.03);background:#ffffff2e}
+.glass{background:linear-gradient(135deg,#ffffff20,#ffffff09);border:1px solid #ffffff2d;border-radius:14px;backdrop-filter:blur(8px)}
+#storyRoot{position:relative;z-index:1}
+.genre{min-height:100svh;position:relative;display:grid;place-items:center;padding:4.5rem 1rem 1.2rem;isolation:isolate}
+.parallax,.overlay{position:absolute;inset:0}
+.parallax{transform:translate3d(0,0,0) scale(1.12);will-change:transform;transition:transform .2s linear}
+.story-panel{position:relative;z-index:3;width:min(92vw,640px);padding:1rem}
+.story-panel h2{margin:.2rem 0 .5rem;font-size:clamp(1.4rem,5vw,2.4rem)}
+.lead{opacity:.92;line-height:1.45}
+.beat{opacity:0;transform:translateY(14px);transition:.7s ease}
+.beat.visible{opacity:1;transform:none}
+.secret-hit{position:absolute;bottom:8%;right:8%;width:56px;height:56px;border:0;background:transparent;z-index:4}
+.vignette{background:radial-gradient(circle at center,transparent 40%,#00000090 100%)}
+.genre.horror{--accent:#980d19}.genre.scifi{--accent:#55adff}.genre.romance{--accent:#ff7cb8}.genre.fantasy{--accent:#72f2b8}.genre.mystery{--accent:#88a6ff}
+.genre .reveal-btn{margin-top:.7rem;border-color:var(--accent);box-shadow:0 0 16px color-mix(in srgb,var(--accent),transparent 70%)}
+.horror{font-family:Playfair Display,serif}.scifi{font-family:Orbitron,sans-serif}.romance{font-family:'Great Vibes',cursive}.fantasy{font-family:Cinzel,serif}.mystery{font-family:Inter,sans-serif}
+@media (min-width: 768px){.topbar h1{font-size:1.2rem}.story-panel{padding:1.2rem 1.3rem}}

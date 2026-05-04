@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StorySphere — Cinematic Interactive Stories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;600&family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="fxCanvas" aria-hidden="true"></canvas>
+
+    <header class="topbar glass">
+      <h1>StorySphere</h1>
+      <nav id="genreNav" aria-label="Genre Navigation"></nav>
+      <button id="audioToggle" class="pill">Audio: Off</button>
+    </header>
+
+    <main id="storyRoot"></main>
+
+    <template id="sectionTemplate">
+      <section class="genre section-shell">
+        <div class="parallax back" data-depth="0.15"></div>
+        <div class="parallax mid" data-depth="0.35"></div>
+        <div class="parallax front" data-depth="0.65"></div>
+
+        <div class="overlay vignette"></div>
+        <article class="story-panel glass">
+          <h2></h2>
+          <p class="lead"></p>
+          <div class="beats"></div>
+          <button class="pill reveal-btn">Reveal</button>
+        </article>
+
+        <button class="secret-hit" aria-label="secret trigger"></button>
+      </section>
+    </template>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
