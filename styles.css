@@ -1,24 +1,45 @@
-:root { color-scheme: dark; --fg: #eef3ff; --bg: #05070d; }
-*{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter,sans-serif;overflow-x:hidden}
-#fxCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
-.topbar{position:fixed;top:.75rem;left:.75rem;right:.75rem;display:flex;gap:.6rem;align-items:center;justify-content:space-between;padding:.6rem .8rem;z-index:30}
-.topbar h1{margin:0;font-size:1rem;letter-spacing:.08em}
-#genreNav{display:flex;gap:.35rem;overflow:auto;max-width:60vw}
-.pill{border:1px solid #ffffff40;background:#ffffff14;color:white;padding:.4rem .7rem;border-radius:999px;backdrop-filter:blur(10px);transition:.25s transform,.25s background;will-change:transform}
-.pill:hover,.pill:active{transform:translateY(-2px) scale(1.03);background:#ffffff2e}
-.glass{background:linear-gradient(135deg,#ffffff20,#ffffff09);border:1px solid #ffffff2d;border-radius:14px;backdrop-filter:blur(8px)}
-#storyRoot{position:relative;z-index:1}
-.genre{min-height:100svh;position:relative;display:grid;place-items:center;padding:4.5rem 1rem 1.2rem;isolation:isolate}
-.parallax,.overlay{position:absolute;inset:0}
-.parallax{transform:translate3d(0,0,0) scale(1.12);will-change:transform;transition:transform .2s linear}
-.story-panel{position:relative;z-index:3;width:min(92vw,640px);padding:1rem}
-.story-panel h2{margin:.2rem 0 .5rem;font-size:clamp(1.4rem,5vw,2.4rem)}
-.lead{opacity:.92;line-height:1.45}
-.beat{opacity:0;transform:translateY(14px);transition:.7s ease}
-.beat.visible{opacity:1;transform:none}
-.secret-hit{position:absolute;bottom:8%;right:8%;width:56px;height:56px;border:0;background:transparent;z-index:4}
-.vignette{background:radial-gradient(circle at center,transparent 40%,#00000090 100%)}
-.genre.horror{--accent:#980d19}.genre.scifi{--accent:#55adff}.genre.romance{--accent:#ff7cb8}.genre.fantasy{--accent:#72f2b8}.genre.mystery{--accent:#88a6ff}
-.genre .reveal-btn{margin-top:.7rem;border-color:var(--accent);box-shadow:0 0 16px color-mix(in srgb,var(--accent),transparent 70%)}
-.horror{font-family:Playfair Display,serif}.scifi{font-family:Orbitron,sans-serif}.romance{font-family:'Great Vibes',cursive}.fantasy{font-family:Cinzel,serif}.mystery{font-family:Inter,sans-serif}
-@media (min-width: 768px){.topbar h1{font-size:1.2rem}.story-panel{padding:1.2rem 1.3rem}}
+:root {
+  --bg: #05070c;
+  --fg: #ecf2ff;
+  --glass: #ffffff15;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: Inter, sans-serif; scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+#worldFx { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+#reticle { position: fixed; width: 32px; height: 32px; border: 1px solid #84beff; border-radius: 50%; transform: translate(-50%, -50%); z-index: 28; pointer-events: none; mix-blend-mode: screen; box-shadow: 0 0 22px #6ab2ff88; }
+.hud { position: fixed; top: .55rem; left: .55rem; right: .55rem; z-index: 40; display: flex; gap: .6rem; align-items: center; justify-content: space-between; padding: .55rem .75rem; }
+.brand { font-weight: 700; letter-spacing: .14em; font-size: .85rem; text-transform: uppercase; }
+#nav { display: flex; gap: .35rem; overflow-x: auto; max-width: 60vw; }
+.controls { display: flex; gap: .35rem; }
+.glass { backdrop-filter: blur(10px); background: linear-gradient(140deg, #ffffff20, #ffffff0c); border: 1px solid #ffffff2c; border-radius: 14px; }
+.chip { border: 1px solid #ffffff35; color: #fff; background: var(--glass); border-radius: 999px; padding: .42rem .7rem; transition: transform .18s, box-shadow .18s; }
+.chip:hover, .chip:active { transform: scale(1.04) translateY(-1px); box-shadow: 0 0 16px #8fbfff70; }
+#app { position: relative; z-index: 3; }
+.scene { min-height: 100svh; position: relative; display: grid; place-items: center; padding: 4.2rem .9rem 1rem; overflow: hidden; isolation: isolate; }
+.layer { position: absolute; inset: 0; will-change: transform, opacity; transition: transform .2s linear, opacity .7s ease; }
+.transition-mask { position: absolute; inset: 0; opacity: 0; background: radial-gradient(circle at center, transparent 30%, #000 120%); transition: opacity .8s ease; }
+.narrative { position: relative; z-index: 8; width: min(94vw, 680px); padding: 1rem; }
+.narrative h2 { margin: .2rem 0 .55rem; font-size: clamp(1.4rem, 6vw, 2.8rem); }
+.hook { margin: 0 0 .7rem; opacity: .9; line-height: 1.45; }
+.beat { opacity: 0; transform: translateY(16px); transition: .8s ease; margin: .42rem 0; }
+.beat.show { opacity: 1; transform: none; }
+.actions { margin-top: .8rem; display: flex; gap: .5rem; }
+.easter-zone { position: absolute; width: 68px; height: 68px; bottom: 9%; right: 8%; border: 0; background: transparent; z-index: 11; }
+.scene.active .transition-mask { opacity: .25; }
+.scene.horror { font-family: Creepster, cursive; }
+.scene.scifi { font-family: Orbitron, sans-serif; }
+.scene.romance { font-family: 'Great Vibes', cursive; }
+.scene.fantasy { font-family: Cinzel, serif; }
+.scene.mystery { font-family: Inter, sans-serif; }
+.scene.horror .narrative { text-shadow: 0 0 24px #ba2138aa; }
+.scene.scifi .narrative { text-shadow: 0 0 22px #2f74ffaa; }
+.scene.romance .narrative { text-shadow: 0 0 20px #ff99cfaa; }
+.scene.fantasy .narrative { text-shadow: 0 0 20px #58e6c0aa; }
+.scene.mystery .narrative { text-shadow: 0 0 20px #8aa8ffaa; }
+.scene.reveal-major .narrative { animation: majorPulse 1.4s ease; }
+@keyframes majorPulse { 0%{transform:scale(1)} 35%{transform:scale(1.03)} 100%{transform:scale(1)} }
+@media (min-width: 760px) {
+  .brand { font-size: .95rem; }
+  .narrative { padding: 1.2rem 1.3rem; }
+}
